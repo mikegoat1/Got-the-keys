@@ -34,15 +34,35 @@ function wholeThang(){
 
   var wantNum = confirm("Do you want Numbers?");
 
-  if(wantSpChar === false && )
+  // If nothing is picked this message will post and restart
 
+  if(wantSpChar === false && wantLwCase === false && wantUpCase === false && wantNum === false){
+    alert("You have to pick one... Lets start from the begining..");
+    return;
+  }
+
+
+  // This function will randomly pick out of an array
+
+  function randomizer (array){
+    var x = Math.floor(Math.random()*array.length);
+    return x;
+  }
+  
+
+  function passwordGenorator () {
+
+    var options = randomizer();
+    array = [];
+    if(wantSpChar){
+      randomizer(arraySpecial);
+    }
+  }
 
 }
 
   // variable store the user choice about special characters create a confirm or make variable = answer to there confirm
   // add message to your confirm 
-  
-
   // if all character confirms false, tell user to at least pick one character or return. 
 
   // create a function to create a password generator randomly (array)
