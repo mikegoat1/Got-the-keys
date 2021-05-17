@@ -12,15 +12,21 @@ var arrayNumber = ["1","2","3","4","5","6","7","8","9","0"];
 // Starts alert at the begining of page load
 alert("It's time to make a password. Don't worry I will do most of the work.");
 
-function wholeThang(){
+function generatePassword(){
   // Sets up function to ask for length of password
   var passWordLength = prompt("How long would you like the password?" );
+  var length =  parseInt(passWordLength, 10);
+  // Making sure there is a number and not a string
+  if(length !== Number){
+    alert("Only numbers are permitted!"); 
+    return;
+  }
   // Sets parameters for the max and min amount of characters
-  if(passWordLength > 8){
+  if(length > 8){
     alert("Password needs to be aleast 8 characters long. Please restart page.");
     return;
   }
-  if(passWordLength > 128){
+  if(length > 128){
     alert("Brah, thats way to many characters. Imma restart.");
     return;
   }
@@ -44,46 +50,40 @@ function wholeThang(){
 
   // This function will randomly pick out of an array
 
-  function randomizer (array){
+  function passwordGenorator () {
+
+    var options = generatePassword();
+    var array = [];
+
+    if(wantSpChar){
+      array = array.concat(arraySpecial);
+    }
+
+    if(wantLwCase){
+      array = array.concat(arrayLower);
+    }
+
+    if(wantUpCase){
+      array = array.concat(arrayUpper);
+    }
+
+    if(wantNum){
+      array = array.concat(arrayNumber);
+    }
+
+    for (let index = 0; index >= passWordLength; index++) {
+      array = randomizer(array);
+      
+    }
+
+  }
+  
+}
+
+function randomizer (array){
     var x = Math.floor(Math.random()*array.length);
     return x;
   }
-  
-
-  function passwordGenorator () {
-
-    var options = randomizer();
-    array = [];
-    if(wantSpChar){
-      randomizer(arraySpecial);
-    }
-  }
-
-}
-
-  // variable store the user choice about special characters create a confirm or make variable = answer to there confirm
-  // add message to your confirm 
-  // if all character confirms false, tell user to at least pick one character or return. 
-
-  // create a function to create a password generator randomly (array)
-    // variable = Math.floor(Math.random() * array.length)
-    // return variable 
-  
-  
-  // Function to generate password
-    //var options = password options function
-    // array = []
-    // check if options exists, return
-    // check if options has special charctes
-    // array = array.concat(special charcters)
-    // check if options has uppercase charctes
-    // array = array.concat(upper case characters)
-    // check if options has lowercase charctes
-    // array = array.concat(lower case chacters)
-    // check if options has number charctes
-    // array = array.concat(numeric)
-    // for loop to call randomly generate passwords., pass our array
-
 
 
 // Write password to the #password input
